@@ -3,7 +3,7 @@ import 'package:moor_flutter/moor_flutter.dart';
 part 'database.g.dart';
 
 class Socks extends Table {
-  TextColumn get id => text()();
+  TextColumn get id => text().customConstraint("UNIQUE")();
   TextColumn get label => text()();
 
   @override

@@ -96,11 +96,8 @@ class $SocksTable extends Socks with TableInfo<$SocksTable, Sock> {
   @override
   GeneratedTextColumn get id => _id ??= _constructId();
   GeneratedTextColumn _constructId() {
-    return GeneratedTextColumn(
-      'id',
-      $tableName,
-      false,
-    );
+    return GeneratedTextColumn('id', $tableName, false,
+        $customConstraints: 'UNIQUE');
   }
 
   final VerificationMeta _labelMeta = const VerificationMeta('label');
@@ -142,7 +139,7 @@ class $SocksTable extends Socks with TableInfo<$SocksTable, Sock> {
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
   Sock map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
